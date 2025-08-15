@@ -34,7 +34,7 @@ def load_models():
         state.xgb_model, state.tfidf_vectorizer, state.scaler = load_core_prioritization_model()
         state.dep_tokenizer, state.dep_model = load_dependency_model()
         state.embedder = load_text_embedder()
-        #state.contextual_models = load_contextual_models()
+        state.contextual_models = load_contextual_models()
         #state.risk_model = state.contextual_models['risk']
         #state.urgency_model = state.contextual_models['urgency']
         #state.complexity_model = state.contextual_models['complexity']
@@ -43,7 +43,7 @@ def load_models():
         #state.stakeholder_criticality_model = state.contextual_models['stakeholder_criticality']
         #state.requirement_stability_model = state.contextual_models['requirement_stability']
         #state.security_sensitivity_model = state.contextual_models['security_sensitivity']
-        print("✅ All models loaded successfully.")
+        print(" All models loaded successfully.")
     except Exception as e:
         print(f"Error loading models: {e}")
         raise RuntimeError("Model loading failed. Check file paths and formats.")
@@ -57,3 +57,4 @@ app.include_router(status_router, prefix="/api")
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+
