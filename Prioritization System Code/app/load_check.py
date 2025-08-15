@@ -15,7 +15,7 @@ try:
     dep_tokenizer, dep_model = load_dependency_model(model_dir="path/to/dependency/model")
     embedder = load_text_embedder()
 except Exception as e:
-    print("❌ Error loading models:", e)
+    print(" Error loading models:", e)
     raise RuntimeError("Model loading failed.")
 
 @router.get("/status")
@@ -42,3 +42,4 @@ def health_check():
                 "message": f"Model check failed: {str(e)}"
             }
         )
+
