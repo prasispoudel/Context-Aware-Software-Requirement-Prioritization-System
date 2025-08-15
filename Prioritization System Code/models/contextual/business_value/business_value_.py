@@ -81,12 +81,12 @@ tuner.search(
 )
 
 best_hp = tuner.get_best_hyperparameters(1)[0]
-print("\n✅ Best hyperparameters found:", best_hp.values)
+print("\n Best hyperparameters found:", best_hp.values)
 
 import pickle
 with open('best_hyperparameters.pkl', 'wb') as f:
     pickle.dump(best_hp.values, f)
-print("\n✅ Best hyperparameters saved to best_hyperparameters.pkl.")
+print("\n Best hyperparameters saved to best_hyperparameters.pkl.")
 
 # --- Script 2: K-Fold Evaluation with CoralOrdinal ---
 import pandas as pd
@@ -119,7 +119,7 @@ X_embeddings = embedder.encode(X_texts, batch_size=32, show_progress_bar=True)
 # 3) Load best hyperparameters
 with open('best_hyperparameters.pkl', 'rb') as f:
     best_hp_values = pickle.load(f)
-print("\n✅ Loaded best hyperparameters:", best_hp_values)
+print("\n Loaded best hyperparameters:", best_hp_values)
 
 # 4) Utility: Convert cumulative probabilities to predicted ordinal labels
 def prob_to_label(cum_probs):
@@ -170,7 +170,7 @@ for train_idx, val_idx in kf.split(X_embeddings, y_ord):
     spearman_list.append(spearman_corr)
     fold += 1
 
-print("\n✅ Cross-validation complete!")
+print("\n Cross-validation complete!")
 print(f"Average MAE: {np.mean(mae_list):.3f} ± {np.std(mae_list):.3f}")
 print(f"Average QWK: {np.mean(qwk_list):.3f} ± {np.std(qwk_list):.3f}")
 print(f"Average Spearman: {np.mean(spearman_list):.3f} ± {np.std(spearman_list):.3f}")
@@ -201,7 +201,7 @@ X_embeddings = embedder.encode(X_texts, batch_size=32, show_progress_bar=True)
 # --- 3. Load best hyperparameters ---
 with open('best_hyperparameters.pkl', 'rb') as f:
     best_hp_values = pickle.load(f)
-print("\n✅ Loaded best hyperparameters:", best_hp_values)
+print("\n Loaded best hyperparameters:", best_hp_values)
 
 # --- 4. Build final model with best hyperparameters ---
 model = Sequential()
@@ -230,14 +230,14 @@ model.fit(
 # --- 6. Save model & artifacts ---
 print("\n💾 Saving model and related files...")
 
-# ✅ Save the model in native Keras format (Keras 3 compatible)
+#  Save the model in native Keras format (Keras 3 compatible)
 model.save('final_business_value_model.keras')
 
-# ✅ Save hyperparameters
+#  Save hyperparameters
 with open('final_best_hyperparameters.pkl', 'wb') as f:
     pickle.dump(best_hp_values, f)
 
-# ✅ Save preprocessing details
+#  Save preprocessing details
 preprocessing_info = {
     "label_offset": -1,
     "cleaning": "lowercase + remove non-alphanumerics",
