@@ -1,0 +1,5 @@
+{
+  "label_offset": -1,
+  "cleaning": "lowercase + remove non-alphanumerics",
+  "embedding_model": "sentence-transformers/all-mpnet-base-v2 (online)"
+}
