@@ -14,50 +14,6 @@ from sentence_transformers import SentenceTransformer
 import joblib
 import pickle
 
-'''
-# === Core Prioritization Model ===
-def load_core_prioritization_model(model_dir="models/prioritization/"):
-    model_path = os.path.join(model_dir, "Tuned_XGBoost_(Bayesian_Opt)_model.joblib")
-    vectorizer_path = os.path.join(model_dir, "tfidf_vectorizer.joblib")
-    scaler_path = os.path.join(model_dir, "scaler.joblib")
-
-    model = joblib.load(model_path)
-    vectorizer = joblib.load(vectorizer_path)
-    scaler = joblib.load(scaler_path)
-
-    return model, vectorizer, scaler
-
-# === Dependency Estimation Model (RoBERTa) ===
-from transformers import RobertaTokenizer, RobertaForSequenceClassification
-import torch
-
-def load_dependency_model(model_dir: str):
-    tokenizer = RobertaTokenizer.from_pretrained(model_dir)
-    model = RobertaForSequenceClassification.from_pretrained(model_dir)
-    model.eval()
-    return tokenizer, model
-
-
-# === Optional: Sentence Embedding Loader (e.g., USE) ===
-def load_text_embedder(model_name="sentence-transformers/all-mpnet-base-v2"):
-    return SentenceTransformer(model_name)
-    '''
-
-'''
-import os
-import joblib
-from typing import Dict
-import torch
-from sklearn.feature_extraction.text import TfidfVectorizer
-from transformers import RobertaTokenizer, RobertaForSequenceClassification
-
-try:
-    from tensorflow.keras.models import load_model
-except ImportError:
-    from keras.models import load_model
-
-from sentence_transformers import SentenceTransformer
-'''
 # === Core Prioritization Model ===
 def load_core_prioritization_model(model_dir="models/prioritization/"):
     model_path = os.path.join(model_dir, "Tuned_XGBoost_(Bayesian_Opt)_model.joblib")
