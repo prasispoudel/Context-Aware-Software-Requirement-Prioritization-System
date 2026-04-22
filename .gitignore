@@ -1,0 +1,75 @@
+# Python cache and build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.env
+*.venv
+.env
+.venv
+build/
+dist/
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Model files and large binaries (do not upload trained models, weights, or vectorizers)
+Prioritization System Code/models/**/*.joblib
+Prioritization System Code/models/**/*.pkl
+Prioritization System Code/models/**/*.h5
+Prioritization System Code/models/**/*.keras
+Prioritization System Code/models/**/*.pt
+Prioritization System Code/models/**/*.pth
+Prioritization System Code/models/**/*.ckpt
+Prioritization System Code/models/**/*.sav
+Prioritization System Code/models/**/*.bin
+Prioritization System Code/models/**/*.json
+Prioritization System Code/models/**/*.onnx
+
+# HuggingFace/transformers model folders
+Prioritization System Code/models/**/tokenizer_config.json
+Prioritization System Code/models/**/config.json
+Prioritization System Code/models/**/pytorch_model.bin
+Prioritization System Code/models/**/tf_model.h5
+Prioritization System Code/models/**/special_tokens_map.json
+Prioritization System Code/models/**/vocab.txt
+Prioritization System Code/models/**/merges.txt
+
+# VSCode and IDE settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Node modules and build artifacts (for frontend)
+requirement-prioritization-app/node_modules/
+requirement-prioritization-app/build/
+requirement-prioritization-app/dist/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Excel and data files
+Prioritization System Code/models/**/*.xlsx
+Prioritization System Code/models/**/*.csv
+
+# Temporary files
+*.tmp
+*.bak
+
+# Do not ignore source code, configs, notebooks, or documentation
+!Prioritization System Code/**/*.py
+!Prioritization System Code/**/*.ipynb
+!Prioritization System Code/**/*.md
+!Prioritization System Code/**/*.txt
+!Prioritization System Code/**/*.yaml
+!Prioritization System Code/**/*.yml
+!requirement-prioritization-app/**/*.js
+!requirement-prioritization-app/**/*.jsx
+!requirement-prioritization-app/**/*.css
+!requirement-prioritization-app/**/*.html
+!requirement-prioritization-app/**/*.md
