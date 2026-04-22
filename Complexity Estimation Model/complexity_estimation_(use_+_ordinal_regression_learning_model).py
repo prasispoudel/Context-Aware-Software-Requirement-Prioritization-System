@@ -79,12 +79,12 @@ tuner.search(
 )
 
 best_hp = tuner.get_best_hyperparameters(1)[0]
-print("\n✅ Best hyperparameters found:", best_hp.values)
+print("\n Best hyperparameters found:", best_hp.values)
 
 import pickle
 with open('best_hyperparameters.pkl', 'wb') as f:
     pickle.dump(best_hp.values, f)
-print("\n✅ Best hyperparameters saved to best_hyperparameters.pkl.")
+print("\n Best hyperparameters saved to best_hyperparameters.pkl.")
 
 # --- Script 2: K-Fold Evaluation ---
 import pandas as pd
@@ -116,7 +116,7 @@ X_embeddings = embedder.encode(X_texts, batch_size=32, show_progress_bar=True)
 # 3) Load best hyperparameters
 with open('best_hyperparameters.pkl', 'rb') as f:
     best_hp_values = pickle.load(f)
-print("\n✅ Loaded best hyperparameters:", best_hp_values)
+print("\n Loaded best hyperparameters:", best_hp_values)
 
 # 4) Stratified K-Fold
 kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
@@ -156,7 +156,7 @@ for train_idx, val_idx in kf.split(X_embeddings, y_ord):
     spearman_list.append(spearman_corr)
     fold += 1
 
-print("\n✅ Cross-validation complete!")
+print("\n Cross-validation complete!")
 print(f"Average MAE: {np.mean(mae_list):.3f} ± {np.std(mae_list):.3f}")
 print(f"Average QWK: {np.mean(qwk_list):.3f} ± {np.std(qwk_list):.3f}")
 print(f"Average Spearman: {np.mean(spearman_list):.3f} ± {np.std(spearman_list):.3f}")
@@ -164,7 +164,7 @@ print(f"Average Spearman: {np.mean(spearman_list):.3f} ± {np.std(spearman_list)
 # prompt: give me code to display the results of the previous cell.
 
 # Print the average results and their standard deviations
-print("\n✅ Cross-validation complete!")
+print("\n Cross-validation complete!")
 print(f"Average MAE: {np.mean(mae_list):.3f} ± {np.std(mae_list):.3f}")
 print(f"Average QWK: {np.mean(qwk_list):.3f} ± {np.std(qwk_list):.3f}")
 print(f"Average Spearman: {np.mean(spearman_list):.3f} ± {np.std(spearman_list):.3f}")
@@ -225,7 +225,7 @@ tuner = kt.BayesianOptimization(
     project_name='ordinal_complexity_coral'
 )
 
-print("\n🔎 Starting Bayesian hyperparameter search...")
+print("\n Starting Bayesian hyperparameter search...")
 tuner.search(
     X_train, y_train,
     validation_data=(X_val, y_val),
@@ -236,12 +236,12 @@ tuner.search(
 )
 
 best_hp = tuner.get_best_hyperparameters(1)[0]
-print("\n✅ Best hyperparameters found:", best_hp.values)
+print("\n Best hyperparameters found:", best_hp.values)
 
 import pickle
 with open('best_hyperparameters.pkl', 'wb') as f:
     pickle.dump(best_hp.values, f)
-print("\n✅ Best hyperparameters saved to best_hyperparameters.pkl.")
+print("\n Best hyperparameters saved to best_hyperparameters.pkl.")
 
 # --- Script 2: K-Fold Evaluation with CoralOrdinal ---
 import pandas as pd
@@ -274,7 +274,7 @@ X_embeddings = embedder.encode(X_texts, batch_size=32, show_progress_bar=True)
 # 3) Load best hyperparameters
 with open('best_hyperparameters.pkl', 'rb') as f:
     best_hp_values = pickle.load(f)
-print("\n✅ Loaded best hyperparameters:", best_hp_values)
+print("\n Loaded best hyperparameters:", best_hp_values)
 
 # 4) Utility: Convert cumulative probabilities to predicted ordinal labels
 def prob_to_label(cum_probs):
@@ -325,7 +325,7 @@ for train_idx, val_idx in kf.split(X_embeddings, y_ord):
     spearman_list.append(spearman_corr)
     fold += 1
 
-print("\n✅ Cross-validation complete!")
+print("\n Cross-validation complete!")
 print(f"Average MAE: {np.mean(mae_list):.3f} ± {np.std(mae_list):.3f}")
 print(f"Average QWK: {np.mean(qwk_list):.3f} ± {np.std(qwk_list):.3f}")
 print(f"Average Spearman: {np.mean(spearman_list):.3f} ± {np.std(spearman_list):.3f}")
@@ -358,7 +358,7 @@ X_embeddings = embedder.encode(X_texts, batch_size=32, show_progress_bar=True)
 # --- 3. Load best hyperparameters ---
 with open('best_hyperparameters.pkl', 'rb') as f:
     best_hp_values = pickle.load(f)
-print("\n✅ Loaded best hyperparameters:", best_hp_values)
+print("\n Loaded best hyperparameters:", best_hp_values)
 
 # --- 4. Build final model with best hyperparameters ---
 model = Sequential()
@@ -376,7 +376,7 @@ model.compile(
 )
 
 # --- 5. Train final model on full dataset ---
-print("\n🚀 Training final model on the full dataset...")
+print("\n Training final model on the full dataset...")
 model.fit(
     X_embeddings, y_ord,
     epochs=30,
@@ -388,14 +388,14 @@ model.fit(
 # --- 6. Save model & artifacts ---
 print("\n💾 Saving model and related files...")
 
-# ✅ Save the model in native Keras format (Keras 3 compatible)
+# Save the model in native Keras format (Keras 3 compatible)
 model.save('final_complexity_model.keras')
 
-# ✅ Save hyperparameters
+# Save hyperparameters
 with open('final_best_hyperparameters.pkl', 'wb') as f:
     pickle.dump(best_hp_values, f)
 
-# ✅ Save preprocessing details
+# Save preprocessing details
 preprocessing_info = {
     "label_offset": -1,
     "cleaning": "lowercase + remove non-alphanumerics",
@@ -404,7 +404,7 @@ preprocessing_info = {
 with open('preprocessing_info.json', 'w') as f:
     json.dump(preprocessing_info, f, indent=2)
 
-print("\n✅ All artifacts saved:")
+print("\n All artifacts saved:")
 print("  - final_complexity_model.keras")
 print("  - final_best_hyperparameters.pkl")
 print("  - preprocessing_info.json")
